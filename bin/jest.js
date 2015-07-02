@@ -223,6 +223,17 @@ if (fs.existsSync(cwdJestBinPath)) {
   }
 }
 
+(function printLegacyNodeDeprecationMessage() {
+  if (!/^v0/.test(process.version)) {
+    return;
+  }
+
+  console.log('\n  == NOTICE: ==');
+  console.log('    On August 1st, 2015, Jest v0.5.x will work only on io.js');
+  console.log('    Legacy v0.4.x for Node 0.10.x can be found in the ' +
+    'appropriate branch.\n');
+})();
+
 if (!argv.version) {
   console.log('Using Jest CLI v' + jest.getVersion());
 }
